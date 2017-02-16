@@ -18,7 +18,7 @@ function getQuery() {
   let query = [{
     type: 'input',
     name: 'query',
-    message: 'Unesite bolest ili simptom: '
+    message: 'Unesite naziv bolesti: '
   }];
   return inquirer.prompt(query)
     .then(({ query }) => query);
