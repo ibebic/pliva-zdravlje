@@ -2,7 +2,7 @@
 
 const Promise = require('bluebird');
 const request = require('request');
-const r = Promise.promisifyAll(request.defaults({ jar: true }));
+const r = Promise.promisifyAll(request.defaults());
 
 const parseResult = require('./parseResult').parse;
 const inquire = require('./inquire');
