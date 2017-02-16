@@ -2,16 +2,21 @@
 
 const inquirer = require('inquirer');
 
-function chooseDisease(result) {
-  let diseases = result.map(function (a) { return a.name });
+function chooseDisease(diseases) {
+  let diseaseNames = diseases.map(function (a) {
+    return a.name
+  });
   let options = [{
     type: 'list',
     name: 'myChoice',
     message: 'Izaberite:',
-    choices: diseases
+    choices: diseaseNames
   }];
   return inquirer.prompt(options)
-    .then(answers => [answers.myChoice, result]);
+    .then(answer => {
+      let selectedDisease = diseases.find(disease => disease.name === answer.myChoice);
+      return {name: answer.myChoice, url: selectedDisease.url};
+    });
 }
 
 function getQuery() {
@@ -21,10 +26,10 @@ function getQuery() {
     message: 'Unesite naziv bolesti: '
   }];
   return inquirer.prompt(query)
-    .then(({ query }) => query);
+    .then(({query}) => query);
 }
 
 module.exports = {
   chooseDisease,
   getQuery
-}
+};
