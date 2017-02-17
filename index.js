@@ -16,7 +16,7 @@ inquire.getQuery()
   .then(({body}) => {
     let preParsed = preParse(body);
     let parsed = JSON.parse(preParsed);
-    return inquire.chooseDisease(parsed)
+    return inquire.chooseDisease(parsed);
   })
   .then(chosenDisease => {
     return getDiagnosis(chosenDisease.url);

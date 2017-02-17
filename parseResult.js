@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const cheerio = require('cheerio');
 
@@ -13,5 +13,5 @@ function parse(body) {
 
 module.exports = {
   parse
-}
+};
 
