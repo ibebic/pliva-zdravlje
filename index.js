@@ -3,7 +3,7 @@
 const Promise = require('bluebird');
 const request = require('request');
 const r = Promise.promisifyAll(request.defaults());
-const urlEncode = require('urlencode');
+const urlEncode = require('urlencode').encode;
 
 const parseResult = require('./parseResult').parse;
 const inquire = require('./inquire');
@@ -23,7 +23,7 @@ inquire.getQuery()
   });
 
 function getSearchResults(searchQuery) {
-  searchQuery = urlEncode.encode(searchQuery);
+  searchQuery = urlEncode(searchQuery);
   let url = baseUrl + searchUrl + searchQuery;
   return r.getAsync(url);
 }
